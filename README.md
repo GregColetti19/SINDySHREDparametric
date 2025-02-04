@@ -90,7 +90,7 @@ If you use this repository in your research, please cite:
 ```
 @article{coletti2024sindyshred,
   author = {Gregorio Coletti},
-  title = {SINDy-SHRED: Combining Discovery and Prediction for Complex PDE Dynamics},
+  title = {Parametric SINDy-SHRED: Combining Discovery and Prediction for Complex PDE Dynamics},
   year = {2024},
   journal = {arXiv preprint}
 }
