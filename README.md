@@ -42,7 +42,10 @@ data, dt = load_your_data() #load your data and the temporal step
 params = load_your_params() #load your params
 data = reshape_to_correct_dimensions(data) #(nx, ny, nt, nf, num_param)
 params = reshape_params(params) #(num_param, num_paramsForSystem)
-train_dataset, val_dataset, test_dataset = processData(data, parameters=params, lags=11, num_sensors=40, train_ratio=0.8, val_ratio=0.1, param_split = True, constant_params=True, noise=None)
+
+param_split = True # or param_split = False
+noise = None # or noise = float
+train_dataset, val_dataset, test_dataset = processData(data, parameters=params, lags=11, num_sensors=40, train_ratio=0.8, val_ratio=0.1, param_split = param_split, constant_params=True, noise=noise)
 ```
 
 #### **2. Define the Model**
@@ -67,11 +70,20 @@ train_error, val_error = fit_SindyShred_param(model, train_dataset, val_dataset,
 from TestSindyShred import test_error, plot_sensors_comparison_shred, plot_sensors_comparison_sindy, plot_shred_comparison_2D
 
 test_err_shred, test_err_sindy = test_error(model, test_dataset)
-k = np.random.randint(0, int(num_param*0.1))
+if param_split:
+    k = np.random.randint(0, int(num_param*(1-train_ratio-val_ratio)))
+    test_range = nt
+else:
+    k = np.random.randint(0, num_param)
+    test_range = int(nt*(1-train_ratio-val_ratio))
 plot_sensors_comparison_shred(model, data_test, nt, k)
 plot_sensors_comparison_sindy(model, data_test, nt, k)
-instant = np.random.randint(0,nt)
-plot_shred_comparison_2D(model, data_test, instant, nx, ny, nt, nf, k)
+
+instant = np.random.randint(0,test_range)
+if param_split:
+    plot_shred_comparison_2D(model, data_test, instant, nx, ny, test_range, nf, k)
+else:
+    plot_shred_comparison_2D(model, data_test, instant, nx, ny, test_range+1, nf, k)
 ```
 
 ## File Structure
