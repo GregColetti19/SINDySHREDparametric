@@ -55,7 +55,7 @@ train_dataset, val_dataset, test_dataset = processData(data, parameters=params, 
 from SindyShredModel import SINDySHRED
 
 model = SINDySHRED(max_degree=1, hidden_size=3, hidden_layers=2, threshold=0.3,
-                    num_sensors=40, decoder_sizes=[10, 500], dropout=0.1)
+                    num_sensors=40, decoder_sizes=[40, 400], dropout=0.1)
 ```
 
 #### **3. Train the Model**
