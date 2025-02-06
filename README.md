@@ -64,7 +64,7 @@ from SindyShredModel import fit_SindyShred_param
 
 train_error, val_error = fit_SindyShred_param(model, train_dataset, val_dataset,
                                               batch_size=25, num_epochs=1000,
-                                              lr=0.01, lambda_sindy=0.3, verbose=True, patience=5)
+                                              lr=0.01, lambda_sindy=0.1, verbose=True, patience=5)
 ```
 
 #### **4. Test and Plot Results**
