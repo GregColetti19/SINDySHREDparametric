@@ -45,7 +45,9 @@ params = reshape_params(params) #(num_param, num_paramsForSystem)
 
 param_split = True # or param_split = False
 noise = None # or noise = float
-train_dataset, val_dataset, test_dataset = processData(data, parameters=params, lags=11, num_sensors=40, train_ratio=0.8, val_ratio=0.1, param_split = param_split, constant_params=True, noise=noise)
+train_ratio = 0.8
+val_ratio = 0.1
+train_dataset, val_dataset, test_dataset = processData(data, parameters=params, lags=11, num_sensors=40, train_ratio=train_ratio, val_ratio=val_ratio, param_split = param_split, constant_params=True, noise=noise)
 ```
 
 #### **2. Define the Model**
