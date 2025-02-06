@@ -95,7 +95,6 @@ SINDySHREDparametric/
 │-- SindyShredModel.py    # Model definition (GRU, SINDy, Decoder)
 │-- TestSindyShred.py     # Testing and visualization utilities
 │-- TutorialFlow.ipynb    # Step-by-step Jupyter Notebook tutorial
-│-- requirements.txt      # Python dependencies
 │-- README.md             # Documentation
 ```
 
